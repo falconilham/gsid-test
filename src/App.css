@@ -1,7 +1,10 @@
 .App {
   text-align: center;
 }
-
+.container{
+    display: grid;
+    justify-content: center;
+}
 .App-logo {
   height: 40vmin;
 }
