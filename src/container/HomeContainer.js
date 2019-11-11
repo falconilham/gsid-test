@@ -29,18 +29,12 @@ class HomeContainer extends Component {
 	}
 
 	relatedArticle = async (value, e) => {
-		this.setState({
-			search : value
-		})
-		const {search} = this.state
-		console.log(search)
 		const { addItem } = this.props
 		let data_handler = []
-		let query = api_QUERY+search+"&api-key="+api_KEY
+		let query = api_QUERY+value+"&api-key="+api_KEY
 		try{
 			await axios.get(query)
 			.then((response) => {
-				console.log(response)
 				const data_response = response.data.response.docs
 				data_response.forEach( doc => {
 					data_handler.push(doc)
@@ -51,7 +45,7 @@ class HomeContainer extends Component {
 				})
 			})
 		}catch(error){
-			console.log(error)
+			alert(error)
 			this.setState({
 				isLoading: false
 			})
@@ -85,7 +79,7 @@ class HomeContainer extends Component {
 				})
 			})
 		}catch(error){
-			console.log(error)
+			alert(error)
 			this.setState({
 				isLoading: false
 			})	
@@ -104,7 +98,6 @@ class HomeContainer extends Component {
 		try{
 			await axios.get(query)
 			.then((response) => {
-				console.log(response)
 				const data_response = response.data.response.docs
 				data_response.forEach( doc => {
 					data_handler.push(doc)
@@ -115,7 +108,7 @@ class HomeContainer extends Component {
 				})
 			})
 		}catch(error){
-			console.log(error)
+			alert(error)
 			this.setState({
 				isLoading: false
 			})

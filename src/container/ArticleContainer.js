@@ -30,7 +30,7 @@ class ArticleContainer extends Component {
 				})
 			})
 		}catch(error){
-			console.log(error)
+			alert(error)
 		}
 		
 	}

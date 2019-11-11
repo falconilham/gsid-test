@@ -57,3 +57,4 @@ input:focus[type="text"]{
   grid-column-gap: 2px;
   grid-auto-rows: minmax(10px, auto);
 }
+

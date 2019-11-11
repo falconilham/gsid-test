@@ -11,9 +11,13 @@ export default function Article(props){
 					<span>{data && data.byline && data.byline.original}</span>
 				</div>
 				<div className="body-article col-sm-6">
-					<span>{data.lead_paragraph}</span>
+					<span>{data && data.lead_paragraph}</span>
 				</div>
-				<h3>Related</h3>
+				{data && data.keywords.length > 0 ? (
+					<h3>related</h3>
+				):(
+					<h3></h3>
+				)}
 				<div className="related">
 					{(data.keywords || []).map((item, i) => {
 						return(
@@ -23,6 +27,7 @@ export default function Article(props){
 						)
 					})}
 				</div>
+				<a href={data && data.web_url}>Click Here For More Detail</a>
 			</div>
 		</>
 	)
