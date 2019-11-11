@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { api_KEY, api_MAIN, api_FILTER } from '.././API';
+import { api_KEY, api_FILTER } from '.././API';
 import axios from 'axios';
 import Article from '.././component/Article';
 
@@ -18,7 +18,6 @@ class ArticleContainer extends Component {
 	}
 
 	filterSearch = async () => {
-		const {Data} = this.props
 		const {param} = this.props.match.params
 		let search_query = '('+'"'+"nyt://article/"+param+'"'+')'
 		let query = api_FILTER+search_query+"&api-key="+api_KEY
