@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div id="app" className="container">
+    <div id="app">
       <Router>
-        <div>
+        <div className="container">
           <Switch>
             <Route exact path="/" component={HomeContainer} />
             <Route path="/article/:param" component={ArticleContainer} />

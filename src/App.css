@@ -18,8 +18,9 @@
 }
 
 .form{
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 10%;
+  grid-gap: 10px
 }
 
 .item:hover{
@@ -27,13 +28,32 @@
 }
 
 input[type="text"]{
-      border: 0;
-      border-bottom: 1px solid blue;
-      outline: 0;
+  border: 0;
+  border-bottom: 1px solid blue;
+  outline: 0;
 }
-
-input:hover[type="text"]{
-      border: 0;
-      border-bottom: 1px solid red;
-      outline: 0;
+.card{
+  justify-content: space-between;
+}
+input:focus[type="text"]{
+  border: 0;
+  outline: 0;
+}
+.article{
+  display: grid;
+  grid-gap: 20px;
+  justify-items: center;
+}
+.abstract {
+  font-size: 1.25rem;
+}
+.related{
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+.related-home{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2px;
+  grid-auto-rows: minmax(10px, auto);
 }
