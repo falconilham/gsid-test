@@ -10,10 +10,11 @@ class HomeContainer extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			name : "",
+			search : "",
 			Data: []
 		}
 		this.getData.bind(this);
+		//this.Search.bind(this)
 	}
 
 	componentDidMount(){
@@ -24,11 +25,6 @@ class HomeContainer extends Component {
 		this.setState({
 			[e.target.name]: e.target.value
 		})
-	}
-
-	submit = (e) => {
-		e.preventDefault()
-		console.log("ok")
 	}
 
 	getData = async () => {
@@ -50,14 +46,34 @@ class HomeContainer extends Component {
 		}
 	}
 
+	Search = (e) => {
+		e.preventDefault()
+		const {search} = this.state
+		const { addItem } = this.props
+		let data_handler = []
+		let query = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q="+search+"&api-key="+api_search
+		try{
+			axios.get(query)
+			.then((response) => {
+				console.log(response)
+				const data_response = response.data.response.docs
+				data_response.forEach( doc => {
+					data_handler.push(doc)
+				})
+				addItem(data_handler)
+			})
+		}catch(error){
+			console.log(error)
+		}	
+	}
+
 	render(){
 		const {Data} = this.props
-		console.log(this)
 		return(
-			<div>
+			<div className="container">
 				<Home 
 					Fungsi={this.inputHandler.bind(this)}
-					Submit={this.submit.bind(this)}
+					Submit={this.Search.bind(this)}
 				/>
 				<Result 
 					Data = {Data}
